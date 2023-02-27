@@ -1,9 +1,9 @@
-import { Song } from "./song";
-import { CD } from "./cd";
-import { Artist } from "./artist";
+import { Song } from './song';
+import { CD } from './cd';
+import { Artist } from './artist';
 
+/*
 interface MusicLibraryInfo {
-  /*
   showMusicLibraryInfo(): void;
   searchSongByTitle(title: string): Song;
   searchCDByTitle(title: string): CD;
@@ -12,7 +12,6 @@ interface MusicLibraryInfo {
   countSongsInDisc(title: string): number;
   calculateCDDuration(title: string): number;
   calculateCDReproductions(title: string): number;
-  */
 }
 
 export class MusicLibrary implements MusicLibraryInfo {
@@ -22,7 +21,6 @@ export class MusicLibrary implements MusicLibraryInfo {
     this._artists = artists;
   }
 
-  /*
   showMusicLibraryInfo(): void {
     console.log(`Nombre de la biblioteca: ${this.name}`);
     console.log(`Artistas: ${this.artists.map(artist => artist.name).join(', ')}`);
@@ -86,5 +84,5 @@ export class MusicLibrary implements MusicLibraryInfo {
       return cd.songs.reduce((acc, song) => acc + song.numberOfReproductions, 0);
     }
     return 0;
-  }*/
-}
+  }
+}*/
