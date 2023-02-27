@@ -53,8 +53,8 @@ export class Song implements SongInfo {
     this._reproductions = reproductions;
   }
 
-  incrementReproductions(): void {
-    ++this._reproductions;
+  incrementReproductions(): number {
+    return ++this._reproductions;
   }
 
   addGenre(genre: string): void {

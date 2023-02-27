@@ -1,5 +1,4 @@
-import { Song } from "./song";
-import { CD } from "./cd";
+import { CD } from './cd';
 
 interface ArtistInfo {
   readonly _name: string;
