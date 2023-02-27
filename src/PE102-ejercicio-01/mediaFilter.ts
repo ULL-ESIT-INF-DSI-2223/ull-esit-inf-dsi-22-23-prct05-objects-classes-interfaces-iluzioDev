@@ -5,14 +5,7 @@ export function avg(image: number[][], i: number, j: number) {
     for (let y = -1; y <= 1; y++) {
       if (x == 0 && y == 0)
         continue;
-      let offset_x = x;
-      let offset_y = y;
-      if ((i + x) % image.length < 0 )
-        offset_x = image.length + x;
-      if ((j + y) % image[i].length < 0)
-        offset_y = image[i].length + y;
-      
-      sum += image[(i + offset_x) % image.length][(j + offset_y) % image[i].length];
+      sum += image[(i + x + image.length) % image.length][(j + y + image[i].length) % image[i].length];
       count++;
     }
   } 
