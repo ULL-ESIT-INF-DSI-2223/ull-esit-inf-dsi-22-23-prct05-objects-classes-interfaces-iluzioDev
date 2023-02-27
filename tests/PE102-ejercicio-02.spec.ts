@@ -14,4 +14,7 @@ describe("Hexadecimal class tests", () => {
   it('Hexadecimal.parse("A") should be 10', () => {
     expect(Hexadecimal.parse("A")).to.equal(10);
   });
+  it('Hexadecimal.parse("0x26") should be 38', () => {
+    expect(Hexadecimal.parse("0x26")).to.equal(38);
+  });
 });
