@@ -26,5 +26,6 @@ export class CD implements CDInfo {
 
   addSong(song: Song): void {
     this._songs.push(song);
+    return;
   }
 }
