@@ -31,7 +31,7 @@ export interface MusicLibraryInfo {
  * @param _name - Name of the library.
  * @param _artists - Artists of the library.
  * @returns {MusicLibrary} MusicLibrary object.
- * ```typescript	
+ * ```typescript
  * let song = new Song("The Scientist", 2.34, true, 10000, "Pop", "Rock");
  * let cd = new CD("A Rush of Blood to the Head", 2002, song);
  * let artist = new Artist("Coldplay", 1000000, cd);
@@ -53,7 +53,7 @@ export class MusicLibrary implements MusicLibraryInfo {
    * let artist = new Artist("Coldplay", 1000000, cd);
    * let library = new MusicLibrary("My library", artist);
    * console.log(library.name); // "My library"
-   * ``` 
+   * ```
    */
   get name(): string {
     return this._name;

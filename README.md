@@ -66,17 +66,17 @@ Diseñe el conjunto de clases e interfaces necesarias para almacenar una bibliot
 
 Para este ejercicio se ha optado por hacer varias interfaces, clases abstractas y subclases para los elementos que componen la biblioteca musical.
 
-#### <ins>__Canciones__</ins> 
+#### <ins>**Canciones**</ins>
 
-En primer lugar están las canciones que componen cada uno de los albumes de los artistas, para su implementación se ha creado la interfaz ```SongInfo```, que define las propiedas básicas que deben tener todas las canciones:
+En primer lugar están las canciones que componen cada uno de los albumes de los artistas, para su implementación se ha creado la interfaz `SongInfo`, que define las propiedas básicas que deben tener todas las canciones:
 
-- ```title```: Nombre de la canción
-- ```duration```: Duración, en segundos, de la canción
-- ```single```: Un booleano que indica si la canción fue lanzada como un __"single"__ o no.
-- ```reproductions```: Nº de reproducciones que tiene dicha canción.
-- ```genres```: Géneros de la canción.
+- `title`: Nombre de la canción
+- `duration`: Duración, en segundos, de la canción
+- `single`: Un booleano que indica si la canción fue lanzada como un **"single"** o no.
+- `reproductions`: Nº de reproducciones que tiene dicha canción.
+- `genres`: Géneros de la canción.
 
-> ___*Nota:___ La propiedad ```single``` se podría omitir si se hubiese adoptado un diseño enfocado en tener dos clases heredadas, ```SingleSong``` y ```AlbumSong``` de una clase padre abstracta ```Song```. Ambas clases a nivel de propiedades son idénticas, teniendo diferencia en el uso que les queramos dar.
+> **_\*Nota:_** La propiedad `single` se podría omitir si se hubiese adoptado un diseño enfocado en tener dos clases heredadas, `SingleSong` y `AlbumSong` de una clase padre abstracta `Song`. Ambas clases a nivel de propiedades son idénticas, teniendo diferencia en el uso que les queramos dar.
 
 ```typescript
 interface SongInfo {
@@ -88,7 +88,7 @@ interface SongInfo {
 }
 ```
 
-A continuación, se decidió implementar esta interfaz en la clase ```Song```:
+A continuación, se decidió implementar esta interfaz en la clase `Song`:
 
 ```typescript
 export class Song implements SongInfo {
@@ -129,17 +129,17 @@ export class Song implements SongInfo {
 }
 ```
 
-Analizando un poco la clase nos podemos dar cuenta de varias cosas, como por ejemplo que la propiedad ```reproductions``` y ```genres``` que definimos en la interfaz no hacen referencia a atributos en la clase ```Song```, sino a los métodos ```get``` y ```set``` de los atributos ```_reproductions``` y ```_genres``` definidos en la clase (Notese los guiones bajos). 
+Analizando un poco la clase nos podemos dar cuenta de varias cosas, como por ejemplo que la propiedad `reproductions` y `genres` que definimos en la interfaz no hacen referencia a atributos en la clase `Song`, sino a los métodos `get` y `set` de los atributos `_reproductions` y `_genres` definidos en la clase (Notese los guiones bajos).
 
-La razón de esto es porque se ha optado por tener estos atributos como privados, y controlar el acceso a los mismos mediantes getters y setters. Respecto al tema del acceso, el resto de atributos de la clase (los que hemos definido ya en ```SongInfo```) obviamente son públicos, pero además de ello, son sólo de lectura, ya que siguiendo la lógica de este ejercicio, no tenemos necesidad a priori de modificar el nombre, duración o la característica de si es un single o no.
+La razón de esto es porque se ha optado por tener estos atributos como privados, y controlar el acceso a los mismos mediantes getters y setters. Respecto al tema del acceso, el resto de atributos de la clase (los que hemos definido ya en `SongInfo`) obviamente son públicos, pero además de ello, son sólo de lectura, ya que siguiendo la lógica de este ejercicio, no tenemos necesidad a priori de modificar el nombre, duración o la característica de si es un single o no.
 
-#### <ins>__CDs__</ins> 
+#### <ins>**CDs**</ins>
 
-Siguiendo la metodología utilizada en las canciones, se ha definido inicialmente una interfaz para los cds, ```CDInfo```, que contiene las siguientes propiedades:
+Siguiendo la metodología utilizada en las canciones, se ha definido inicialmente una interfaz para los cds, `CDInfo`, que contiene las siguientes propiedades:
 
-- ```title```: Nombre del Disco
-- ```year```: Año de Lanzamiento
-- ```songs```: Colección de canciones que componen el disco (Luego observaremos que cumple el mismo caso que ```reproductions``` y ```genres``` en la clase ```Song```).
+- `title`: Nombre del Disco
+- `year`: Año de Lanzamiento
+- `songs`: Colección de canciones que componen el disco (Luego observaremos que cumple el mismo caso que `reproductions` y `genres` en la clase `Song`).
 
 ```typescript
 interface CDInfo {
@@ -149,7 +149,7 @@ interface CDInfo {
 }
 ```
 
-Con dicha interfaz, se ha implementado la clase ```CD```:
+Con dicha interfaz, se ha implementado la clase `CD`:
 
 ```typescript
 export class CD implements CDInfo {
@@ -179,12 +179,12 @@ export class CD implements CDInfo {
 
 Como se puede observar, es bastante sencilla y funcional la clase, siguiendo un patrón muy parecido a la anterior clase: los atributos públicos sólo están disponibles como lectura, los privados contienen sus respectivos getters y setters...
 
-#### <ins>__Artistas__</ins>
+#### <ins>**Artistas**</ins>
 
-Aquí ya es cuando la cosa se vuelve más compleja, ya que tenemos que contemplar el hecho de que el artista de una cd puede ser un solista, o un grupo. Para lograr este objetivo, creamos primero la interfaz ```ArtistInfo```, que contiene las propiedades comunes para ambos casos:
+Aquí ya es cuando la cosa se vuelve más compleja, ya que tenemos que contemplar el hecho de que el artista de una cd puede ser un solista, o un grupo. Para lograr este objetivo, creamos primero la interfaz `ArtistInfo`, que contiene las propiedades comunes para ambos casos:
 
-- ```name```: Nombre del artista/banda
-- ```discography```: Discografía del artista/banda.
+- `name`: Nombre del artista/banda
+- `discography`: Discografía del artista/banda.
 
 ```typescript
 interface ArtistInfo {
@@ -193,7 +193,7 @@ interface ArtistInfo {
 }
 ```
 
-Y a continuación creamos una <ins>__clase abstracta__</ins> ```BaseArtist``` que define las propiedades de ```ArtistInfo```. 
+Y a continuación creamos una <ins>**clase abstracta**</ins> `BaseArtist` que define las propiedades de `ArtistInfo`.
 
 ```typescript
 export abstract class BaseArtist implements ArtistInfo {
@@ -228,9 +228,9 @@ export abstract class BaseArtist implements ArtistInfo {
 }
 ```
 
-En funcionalidad, lo único destacable que comentar es que el atributo ```_monthlyListeners``` y ```_discography``` en vez de ser privados como en las otras clases, son ```protected``` ya que las clases derivadas van a necesitar estos atributos.
+En funcionalidad, lo único destacable que comentar es que el atributo `_monthlyListeners` y `_discography` en vez de ser privados como en las otras clases, son `protected` ya que las clases derivadas van a necesitar estos atributos.
 
-Y con esto aclarado, podemos implementar las clases ```Artist``` y ```Band```:
+Y con esto aclarado, podemos implementar las clases `Artist` y `Band`:
 
 ```typescript
 export class Artist extends BaseArtist {
@@ -248,17 +248,17 @@ export class Band extends BaseArtist {
 }
 ```
 
-#### <ins>__Biblioteca Musical__</ins>
+#### <ins>**Biblioteca Musical**</ins>
 
-Sólo nos queda desarrollar nuestra biblioteca musical, para ello vamos a definir primero la interfaz que debe seguir, ```MusicLibraryInfo```, que define las siguientes propiedades:
+Sólo nos queda desarrollar nuestra biblioteca musical, para ello vamos a definir primero la interfaz que debe seguir, `MusicLibraryInfo`, que define las siguientes propiedades:
 
-- ```showInfo()```: Muestra la información de la biblioteca musical por pantalla. Observar cómo especificamos que debe ser una función con el uso de paréntesis, al contrario que con los getters y setters.
-- ```searchSong()```: Buscará en la biblioteca una canción determinada por su nombre. En el caso de éxito devuelve la canción (objeto ```Song```), en cualquier otro caso, ```false```.
-- ```searchCD()```: Busca un cd en función de su nombre. En el caso de éxito devolverá el cd (objeto ```CD```), en caso contrario, ```false```.
-- ```searchArtist()```: Busca un artista en función de su nombre, ya sea solista o banda. En caso de éxito, devuelve dicho artista (objeto ```Artist``` o ```Band```, que heredan de ```BaseArtist```), en caso contrario, ```false```.
-- ```countSongsInDisc()```: Cuenta el número de objetos ```Song``` en un disco en concreto. Devuelve ```0``` en el caso de que el disco no posea ninguna canción o no se encuentre en la biblioteca.
-- ```calculateCDDuration()```: Calcula la duración total, en segundos, de un CD. Devuelve ```0```, en el caso de que no se encuentre en la biblioteca.
-- ```calculateCDReproductions()```: Calcula la cantidad de reproducciones en total de todas las canciones de un CD.
+- `showInfo()`: Muestra la información de la biblioteca musical por pantalla. Observar cómo especificamos que debe ser una función con el uso de paréntesis, al contrario que con los getters y setters.
+- `searchSong()`: Buscará en la biblioteca una canción determinada por su nombre. En el caso de éxito devuelve la canción (objeto `Song`), en cualquier otro caso, `false`.
+- `searchCD()`: Busca un cd en función de su nombre. En el caso de éxito devolverá el cd (objeto `CD`), en caso contrario, `false`.
+- `searchArtist()`: Busca un artista en función de su nombre, ya sea solista o banda. En caso de éxito, devuelve dicho artista (objeto `Artist` o `Band`, que heredan de `BaseArtist`), en caso contrario, `false`.
+- `countSongsInDisc()`: Cuenta el número de objetos `Song` en un disco en concreto. Devuelve `0` en el caso de que el disco no posea ninguna canción o no se encuentre en la biblioteca.
+- `calculateCDDuration()`: Calcula la duración total, en segundos, de un CD. Devuelve `0`, en el caso de que no se encuentre en la biblioteca.
+- `calculateCDReproductions()`: Calcula la cantidad de reproducciones en total de todas las canciones de un CD.
 
 ```typescript
 interface MusicLibraryInfo {
@@ -273,7 +273,7 @@ interface MusicLibraryInfo {
 }
 ```
 
-En base a estas propiedades, desarrollamos la clase ```Music Library```:
+En base a estas propiedades, desarrollamos la clase `Music Library`:
 
 ```typescript
 export class MusicLibrary implements MusicLibraryInfo {
@@ -354,4 +354,104 @@ export class MusicLibrary implements MusicLibraryInfo {
 }
 ```
 
-Las anteriores clases e interfaces se han desarrollado de manera defensiva siguiendo las pruebas previamente escritas en el directorio ```src```. La solución propuesta es una de muchas posibilidades, aunque intenta ser lo más flexible posible, observando los aspectos mejorables como la propiedad ```single``` comentada en una __nota__ en la interfaz ```SongInfo```.
+Las anteriores clases e interfaces se han desarrollado de manera defensiva siguiendo las pruebas previamente escritas en el directorio `src`. La solución propuesta es una de muchas posibilidades, aunque intenta ser lo más flexible posible, observando los aspectos mejorables como la propiedad `single` comentada en una **nota** en la interfaz `SongInfo`.
+
+## Ejercicio 2 - Conecta 4
+
+> El juego <ins>**Conecta 4**</ins> consiste en una rejilla de **6 filas** y **7 columnas**, dos jugadores se turnan para ir colocando un conjunto de fichas dejándolas caer por alguna de las siete columnas de la rejilla. Cada jugador dispone de un total de 21 fichas de un color diferente.
+
+> En cada turno, una ficha tomará la primera posición libre de la columna seleccionada por el jugador que corresponda. Si la columna está completa, esto es, ya cuenta con seis fichas, dicha columna no podrá ser seleccionada por ninguno de los dos jugadores para dejar caer otra ficha. El objetivo del jugador es colocar cuatro fichas consecutivas ya sea en una misma fila, una misma columna o en diagonal.
+
+En el caso de que no conozcan el juego y deseen probarlo, pueden jugar contra una IA u otro jugador desde este [enlace](https://www.mathsisfun.com/games/connect4.html).
+
+En este ejercicio debemos realizar la jerarquía de clases e interfaces necesarias para implementar el juego, teniendo en cuenta la descripción anterior.
+
+## PE102
+
+### <ins>**Ejercicio 1. Función mediaFilter**</ins>
+
+En este ejercicio tuvimos que realizar una función `mediaFilter`, que recibiese como entrada un array bidimensional (cuadrada) de números enteros del 0 al 255, es decir, una imagen en blanco y negro.
+
+El objetivo de la función es aplicar una técnica de suavizado, en este caso, cambiar el valor de cada pixel de la imagen por el resultado de la media de sus pixeles adyacentes. En el caso de los pixeles que comforman los bordes de la matriz, se deberán coger los pixeles inmediatamente adyacentes y los adyacentes en el borde contrario.
+
+Para realizar este ejercicio, se optó por realizar dos funciones, una función `avg` que calcularía la media de los adyacentes de un pixel y la función solicitada `mediaFilter`.
+
+```typescript
+export function avg(image: number[][], i: number, j: number) {
+  let sum = 0;
+  let count = 0;
+  for (let x = -1; x <= 1; x++) {
+    for (let y = -1; y <= 1; y++) {
+      if (x == 0 && y == 0) continue;
+      sum +=
+        image[(i + x + image.length) % image.length][
+          (j + y + image[i].length) % image[i].length
+        ];
+      count++;
+    }
+  }
+  return Math.trunc(sum / count);
+}
+```
+
+Para lograr la circularidad de la matriz, aplicamos el módulo del tamaño de filas y columnas para las posiciones en filas y columnas, respectivamente, de los pixeles adyacentes.
+
+```typescript
+export function mediaFilter(image: number[][]) {
+  for (let i = 0; i < image.length; i++)
+    if (image.length != image[0].length) return undefined;
+
+  let result: number[][] = new Array(image.length)
+    .fill(0)
+    .map(() => new Array(image[0].length).fill(0));
+  for (let i = 0; i < image.length; i++) {
+    for (let j = 0; j < image[i].length; j++) {
+      result[i][j] = avg(image, i, j);
+    }
+  }
+  return result;
+}
+```
+
+Para el suavizado, se ha creado una matriz `result` inicializada a `0` para guardar los resultados de cada media, se recorre cada uno de los pixeles de `image` y se guarda el resultado de `avg` en el correspondiente pixel de `result`.
+
+### <ins>**Ejercicio 2. Clase Hexadecimal**</ins>
+
+Nos piden implementar una clase `Hexadecimal`, que reciba como parametro en el constructor un número entero. Además, la clase debe tener los siguientes métodos:
+
+- `valueOf()`: Devuelve el valor como número entero del objeto `Hexadecimal`.
+- `toString()`: Devuelve una cadena de caracteres conteniendo la representación en hexadecimal del número pasado en el constructor.
+- `parse()`: Deberá recibir como argumento una cadena de caracteres conteniendo un número en forma hexadecimal, y deberá devolver su valor decimal como entero.
+
+Aparte, se deberán realizar las siguientes funciones:
+
+- `add()`: Debe devolver la suma de dos números hexadecimales como un nuevo número hexadecimal
+- `sub()`: Debe devolver la resta de dos números hexadecimales como un nuevo hexadecimal.
+
+```typescript
+export class Hexadecimal {
+  constructor(private _number: number) {}
+
+  valueOf(): number {
+    return this._number;
+  }
+
+  toString(): string {
+    return this._number.toString(16).toUpperCase();
+  }
+
+  static parse(hex: string): number {
+    return parseInt(hex, 16);
+  }
+}
+
+export function add(a: Hexadecimal, b: Hexadecimal): Hexadecimal {
+  return new Hexadecimal(a.valueOf() + b.valueOf());
+}
+
+export function sub(a: Hexadecimal, b: Hexadecimal): Hexadecimal {
+  return new Hexadecimal(a.valueOf() - b.valueOf());
+}
+```
+
+Notese como el método `parse()` se ha definido como un método estático de la clase `Hexadecimal`, esto logra que no haya que crear un objeto `Hexadecimal` si sólo queremos saber el valor en decimal de un número hexadecimal.

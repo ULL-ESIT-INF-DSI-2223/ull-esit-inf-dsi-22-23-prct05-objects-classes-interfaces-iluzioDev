@@ -61,14 +61,7 @@ const song8 = new Song(
   "Soundtrack",
   "8-bit"
 );
-const song9 = new Song(
-  "Big Shot",
-  143,
-  false,
-  19000000,
-  "Soundtrack",
-  "8-bit"
-);
+const song9 = new Song("Big Shot", 143, false, 19000000, "Soundtrack", "8-bit");
 const song10 = new Song(
   "Hopes and Dreams",
   182,
@@ -294,15 +287,23 @@ describe("MusicLibrary class tests", () => {
     expect(music_library1.countSongsInDisc("Hollow Knight OST")).to.be.equal(0);
   });
   it('music_library1.calculateCDDuration("Blessed and Possessed") returns 290 segs', () => {
-    expect(music_library1.calculateCDDuration("Blessed and Possessed")).to.be.equal(290);
+    expect(
+      music_library1.calculateCDDuration("Blessed and Possessed")
+    ).to.be.equal(290);
   });
   it('music_library1.calculateCDDuration("Hollow Knight OST") returns 0', () => {
-    expect(music_library1.calculateCDDuration("Hollow Knight OST")).to.be.equal(0);
+    expect(music_library1.calculateCDDuration("Hollow Knight OST")).to.be.equal(
+      0
+    );
   });
   it('music_library1.calculateCDReproductions("Blessed and Possessed") returns 1900000', () => {
-    expect(music_library1.calculateCDReproductions("Blessed and Possessed")).to.be.equal(1900000);
+    expect(
+      music_library1.calculateCDReproductions("Blessed and Possessed")
+    ).to.be.equal(1900000);
   });
   it('music_library1.calculateCDReproductions("Hollow Knight OST") returns 0', () => {
-    expect(music_library1.calculateCDReproductions("Hollow Knight OST")).to.be.equal(0);
+    expect(
+      music_library1.calculateCDReproductions("Hollow Knight OST")
+    ).to.be.equal(0);
   });
 });

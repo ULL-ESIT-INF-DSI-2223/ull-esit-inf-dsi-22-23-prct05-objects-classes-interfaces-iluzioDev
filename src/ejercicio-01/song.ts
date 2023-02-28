@@ -18,7 +18,7 @@ export interface SongInfo {
 /**
  * Class that represents a song and its properties.
  * @class Song
- * @implements SongInfo 
+ * @implements SongInfo
  * @param title Title of the song.
  * @param duration Duration of the song in seconds.
  * @param single Indicates if the song is a single or not.
