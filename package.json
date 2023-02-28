@@ -1,5 +1,5 @@
 {
-  "name": "ull-esit-inf-dsi-22-23-prct05-objects-classes-interfaces-iluziodev",
+  "name": "Desarrollo de Sistemas Informaticos - Universidad de La Laguna",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,7 +10,7 @@
     "test": "mocha",
     "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls && rm -rf .nyc_output",
     "start": "tsc-watch --onSuccess \"node dist/index.js\"",
-    "docs": "typedoc --out docs ./src; touch docs/.nojekyll"
+    "doc": "typedoc --out docs; touch docs/.nojekyll"
   },
   "repository": {
     "type": "git",

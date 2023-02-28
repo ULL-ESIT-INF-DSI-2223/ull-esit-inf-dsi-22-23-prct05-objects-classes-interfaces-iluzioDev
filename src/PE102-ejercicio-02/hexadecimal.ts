@@ -21,4 +21,3 @@ export function add(a: Hexadecimal, b: Hexadecimal): Hexadecimal {
 export function sub(a: Hexadecimal, b: Hexadecimal): Hexadecimal {
   return new Hexadecimal(a.valueOf() - b.valueOf());
 }
-
