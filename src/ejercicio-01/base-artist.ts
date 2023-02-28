@@ -3,7 +3,7 @@ import { CD } from "./cd";
 /**
  * Interface for the ArtistInfo class.
  * @interface ArtistInfo
- * @property name Name of the artist.
+ * @property name Name of the artist/band.
  * @property discography List of CDs of the artist.
  */
 export interface ArtistInfo {
@@ -16,9 +16,8 @@ export interface ArtistInfo {
  * @abstract
  * @class BaseArtist
  * @implements ArtistInfo
- * @param name Name of the artist/band.
- * @param _monthlyListeners Number of monthly listeners of the artist/band.
- * @param _discography List of CDs of the artist/band.
+ * @property _monthlyListeners Number of monthly listeners of the artist/band.
+ * @property _discography List of CDs of the artist/band.
  * @returns BaseArtist object.
  */
 export abstract class BaseArtist implements ArtistInfo {
@@ -70,6 +69,7 @@ export abstract class BaseArtist implements ArtistInfo {
    * let cd = new CD("A Rush of Blood to the Head", 2002, song);
    * let artist = new Artist("Coldplay", 1000000, cd);
    * console.log(artist.discography); // [cd]
+   * ```
    */
   get discography(): CD[] {
     return this._discography;

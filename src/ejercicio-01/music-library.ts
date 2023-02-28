@@ -28,8 +28,8 @@ export interface MusicLibraryInfo {
  * Class that represents a music library.
  * @class MusicLibrary
  * @implements MusicLibraryInfo
- * @param _name - Name of the library.
- * @param _artists - Artists of the library.
+ * @property _name - Name of the library.
+ * @property _artists - Artists of the library.
  * @returns {MusicLibrary} MusicLibrary object.
  * ```typescript
  * let song = new Song("The Scientist", 2.34, true, 10000, "Pop", "Rock");

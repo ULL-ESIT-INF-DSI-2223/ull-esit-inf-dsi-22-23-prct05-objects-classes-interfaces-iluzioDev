@@ -5,9 +5,6 @@ import { BaseArtist } from "./base-artist";
  * Class representing an artist (solist).
  * @class Artist
  * @extends BaseArtist
- * @param name Name of the artist.
- * @param monthlyListeners Number of monthly listeners of the artist.
- * @param discography List of CDs of the artist.
  * @returns Artist object.
  * ```typescript
  * let song = new Song("Bad", 3.34, true, 10000, "Pop", "Rock");

@@ -19,11 +19,6 @@ export interface SongInfo {
  * Class that represents a song and its properties.
  * @class Song
  * @implements SongInfo
- * @param title Title of the song.
- * @param duration Duration of the song in seconds.
- * @param single Indicates if the song is a single or not.
- * @param _reproductions Number of times the song has been reproduced.
- * @param _genres Genres of the song.
  * @returns Song object.
  * ```typescript
  * const song = new Song("The Scientist", 234, true, 0, "Pop", "Rock");

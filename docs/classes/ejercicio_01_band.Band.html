@@ -19,12 +19,6 @@
 <section class="tsd-panel tsd-comment">
 <div class="tsd-comment tsd-typography"><p>Class representing a band.</p>
 
-<h3>Param</h3><p>Name of the band.</p>
-
-<h3>Param</h3><p>Number of monthly listeners of the band.</p>
-
-<h3>Param</h3><p>List of CDs of the band.</p>
-
 <h3>Returns</h3><p>Band object.</p>
 <pre><code class="language-typescript"><span class="hl-2">let</span><span class="hl-1"> </span><span class="hl-3">song</span><span class="hl-1"> = </span><span class="hl-2">new</span><span class="hl-1"> </span><span class="hl-6">Song</span><span class="hl-1">(</span><span class="hl-4">&quot;The Scientist&quot;</span><span class="hl-1">, </span><span class="hl-10">2.34</span><span class="hl-1">, </span><span class="hl-2">true</span><span class="hl-1">, </span><span class="hl-10">10000</span><span class="hl-1">, </span><span class="hl-4">&quot;Pop&quot;</span><span class="hl-1">, </span><span class="hl-4">&quot;Rock&quot;</span><span class="hl-1">);</span><br/><span class="hl-2">let</span><span class="hl-1"> </span><span class="hl-3">cd</span><span class="hl-1"> = </span><span class="hl-2">new</span><span class="hl-1"> </span><span class="hl-6">CD</span><span class="hl-1">(</span><span class="hl-4">&quot;A Rush of Blood to the Head&quot;</span><span class="hl-1">, </span><span class="hl-10">2002</span><span class="hl-1">, </span><span class="hl-3">song</span><span class="hl-1">);</span><br/><span class="hl-2">let</span><span class="hl-1"> </span><span class="hl-3">band</span><span class="hl-1"> = </span><span class="hl-2">new</span><span class="hl-1"> </span><span class="hl-6">Band</span><span class="hl-1">(</span><span class="hl-4">&quot;Coldplay&quot;</span><span class="hl-1">, </span><span class="hl-10">1000000</span><span class="hl-1">, </span><span class="hl-3">cd</span><span class="hl-1">);</span><br/><span class="hl-3">console</span><span class="hl-1">.</span><span class="hl-6">log</span><span class="hl-1">(</span><span class="hl-3">band</span><span class="hl-1">.</span><span class="hl-3">name</span><span class="hl-1">); </span><span class="hl-11">// Coldplay</span><br/><span class="hl-3">console</span><span class="hl-1">.</span><span class="hl-6">log</span><span class="hl-1">(</span><span class="hl-3">band</span><span class="hl-1">.</span><span class="hl-3">monthlyListeners</span><span class="hl-1">); </span><span class="hl-11">// 1000000</span><br/><span class="hl-3">console</span><span class="hl-1">.</span><span class="hl-6">log</span><span class="hl-1">(</span><span class="hl-3">band</span><span class="hl-1">.</span><span class="hl-3">discography</span><span class="hl-1">); </span><span class="hl-11">// [cd]</span>
 </code></pre>
@@ -36,7 +30,7 @@
 <ul class="tsd-hierarchy">
 <li><span class="target">Band</span></li></ul></li></ul></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/ULL-ESIT-INF-DSI-2223/ull-esit-inf-dsi-22-23-prct05-objects-classes-interfaces-iluzioDev/blob/14197f7/src/ejercicio-01/band.ts#L21">ejercicio-01/band.ts:21</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/ULL-ESIT-INF-DSI-2223/ull-esit-inf-dsi-22-23-prct05-objects-classes-interfaces-iluzioDev/blob/4ff14f3/src/ejercicio-01/band.ts#L18">ejercicio-01/band.ts:18</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <details class="tsd-index-content tsd-index-accordion" open><summary class="tsd-accordion-summary tsd-index-summary">
@@ -80,7 +74,7 @@
 <h4 class="tsd-returns-title">Returns <a href="ejercicio_01_band.Band.html" class="tsd-signature-type" data-tsd-kind="Class">Band</a></h4><aside class="tsd-sources">
 <p>Overrides <a href="ejercicio_01_base_artist.BaseArtist.html">BaseArtist</a>.<a href="ejercicio_01_base_artist.BaseArtist.html#constructor">constructor</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/ULL-ESIT-INF-DSI-2223/ull-esit-inf-dsi-22-23-prct05-objects-classes-interfaces-iluzioDev/blob/14197f7/src/ejercicio-01/band.ts#L22">ejercicio-01/band.ts:22</a></li></ul></aside></li></ul></section></section>
+<li>Defined in <a href="https://github.com/ULL-ESIT-INF-DSI-2223/ull-esit-inf-dsi-22-23-prct05-objects-classes-interfaces-iluzioDev/blob/4ff14f3/src/ejercicio-01/band.ts#L19">ejercicio-01/band.ts:19</a></li></ul></aside></li></ul></section></section>
 <section class="tsd-panel-group tsd-member-group">
 <h2>Properties</h2>
 <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-protected tsd-is-inherited"><a id="_discography" class="tsd-anchor"></a>
@@ -88,19 +82,19 @@
 <div class="tsd-signature">_discography<span class="tsd-signature-symbol">:</span> <a href="ejercicio_01_cd.CD.html" class="tsd-signature-type" data-tsd-kind="Class">CD</a><span class="tsd-signature-symbol">[]</span></div><aside class="tsd-sources">
 <p>Inherited from <a href="ejercicio_01_base_artist.BaseArtist.html">BaseArtist</a>.<a href="ejercicio_01_base_artist.BaseArtist.html#_discography">_discography</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/ULL-ESIT-INF-DSI-2223/ull-esit-inf-dsi-22-23-prct05-objects-classes-interfaces-iluzioDev/blob/14197f7/src/ejercicio-01/base-artist.ts#L25">ejercicio-01/base-artist.ts:25</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/ULL-ESIT-INF-DSI-2223/ull-esit-inf-dsi-22-23-prct05-objects-classes-interfaces-iluzioDev/blob/4ff14f3/src/ejercicio-01/base-artist.ts#L24">ejercicio-01/base-artist.ts:24</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-protected tsd-is-inherited"><a id="_monthlyListeners" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagProtected">Protected</code> <span>_monthly<wbr/>Listeners</span><a href="#_monthlyListeners" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">_monthly<wbr/>Listeners<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div><aside class="tsd-sources">
 <p>Inherited from <a href="ejercicio_01_base_artist.BaseArtist.html">BaseArtist</a>.<a href="ejercicio_01_base_artist.BaseArtist.html#_monthlyListeners">_monthlyListeners</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/ULL-ESIT-INF-DSI-2223/ull-esit-inf-dsi-22-23-prct05-objects-classes-interfaces-iluzioDev/blob/14197f7/src/ejercicio-01/base-artist.ts#L28">ejercicio-01/base-artist.ts:28</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/ULL-ESIT-INF-DSI-2223/ull-esit-inf-dsi-22-23-prct05-objects-classes-interfaces-iluzioDev/blob/4ff14f3/src/ejercicio-01/base-artist.ts#L27">ejercicio-01/base-artist.ts:27</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a id="name" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagReadonly">Readonly</code> <span>name</span><a href="#name" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div><aside class="tsd-sources">
 <p>Inherited from <a href="ejercicio_01_base_artist.BaseArtist.html">BaseArtist</a>.<a href="ejercicio_01_base_artist.BaseArtist.html#name">name</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/ULL-ESIT-INF-DSI-2223/ull-esit-inf-dsi-22-23-prct05-objects-classes-interfaces-iluzioDev/blob/14197f7/src/ejercicio-01/base-artist.ts#L27">ejercicio-01/base-artist.ts:27</a></li></ul></aside></section></section>
+<li>Defined in <a href="https://github.com/ULL-ESIT-INF-DSI-2223/ull-esit-inf-dsi-22-23-prct05-objects-classes-interfaces-iluzioDev/blob/4ff14f3/src/ejercicio-01/base-artist.ts#L26">ejercicio-01/base-artist.ts:26</a></li></ul></aside></section></section>
 <section class="tsd-panel-group tsd-member-group">
 <h2>Accessors</h2>
 <section class="tsd-panel tsd-member tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><a id="discography" class="tsd-anchor"></a>
@@ -111,16 +105,13 @@
 <div class="tsd-comment tsd-typography"><p>Getter for the discography of the artist/band.</p>
 
 <h3>Returns</h3><p>Array of CDs.</p>
-<p>```typescript
-let song = new Song(&quot;The Scientist&quot;, 2.34, true, 10000, &quot;Pop&quot;, &quot;Rock&quot;);
-let cd = new CD(&quot;A Rush of Blood to the Head&quot;, 2002, song);
-let artist = new Artist(&quot;Coldplay&quot;, 1000000, cd);
-console.log(artist.discography); // [cd]</p>
+<pre><code class="language-typescript"><span class="hl-2">let</span><span class="hl-1"> </span><span class="hl-3">song</span><span class="hl-1"> = </span><span class="hl-2">new</span><span class="hl-1"> </span><span class="hl-6">Song</span><span class="hl-1">(</span><span class="hl-4">&quot;The Scientist&quot;</span><span class="hl-1">, </span><span class="hl-10">2.34</span><span class="hl-1">, </span><span class="hl-2">true</span><span class="hl-1">, </span><span class="hl-10">10000</span><span class="hl-1">, </span><span class="hl-4">&quot;Pop&quot;</span><span class="hl-1">, </span><span class="hl-4">&quot;Rock&quot;</span><span class="hl-1">);</span><br/><span class="hl-2">let</span><span class="hl-1"> </span><span class="hl-3">cd</span><span class="hl-1"> = </span><span class="hl-2">new</span><span class="hl-1"> </span><span class="hl-6">CD</span><span class="hl-1">(</span><span class="hl-4">&quot;A Rush of Blood to the Head&quot;</span><span class="hl-1">, </span><span class="hl-10">2002</span><span class="hl-1">, </span><span class="hl-3">song</span><span class="hl-1">);</span><br/><span class="hl-2">let</span><span class="hl-1"> </span><span class="hl-3">artist</span><span class="hl-1"> = </span><span class="hl-2">new</span><span class="hl-1"> </span><span class="hl-6">Artist</span><span class="hl-1">(</span><span class="hl-4">&quot;Coldplay&quot;</span><span class="hl-1">, </span><span class="hl-10">1000000</span><span class="hl-1">, </span><span class="hl-3">cd</span><span class="hl-1">);</span><br/><span class="hl-3">console</span><span class="hl-1">.</span><span class="hl-6">log</span><span class="hl-1">(</span><span class="hl-3">artist</span><span class="hl-1">.</span><span class="hl-3">discography</span><span class="hl-1">); </span><span class="hl-11">// [cd]</span>
+</code></pre>
 </div>
 <h4 class="tsd-returns-title">Returns <a href="ejercicio_01_cd.CD.html" class="tsd-signature-type" data-tsd-kind="Class">CD</a><span class="tsd-signature-symbol">[]</span></h4><aside class="tsd-sources">
 <p>Inherited from BaseArtist.discography</p>
 <ul>
-<li>Defined in <a href="https://github.com/ULL-ESIT-INF-DSI-2223/ull-esit-inf-dsi-22-23-prct05-objects-classes-interfaces-iluzioDev/blob/14197f7/src/ejercicio-01/base-artist.ts#L74">ejercicio-01/base-artist.ts:74</a></li></ul></aside></li>
+<li>Defined in <a href="https://github.com/ULL-ESIT-INF-DSI-2223/ull-esit-inf-dsi-22-23-prct05-objects-classes-interfaces-iluzioDev/blob/4ff14f3/src/ejercicio-01/base-artist.ts#L74">ejercicio-01/base-artist.ts:74</a></li></ul></aside></li>
 <li class="tsd-signature" id="discography.discography-2"><span class="tsd-signature-symbol">set</span> discography<span class="tsd-signature-symbol">(</span>discography<span class="tsd-signature-symbol">: </span><a href="ejercicio_01_cd.CD.html" class="tsd-signature-type" data-tsd-kind="Class">CD</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 <li class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>Setter for the discography of the artist/band.</p>
@@ -138,7 +129,7 @@ console.log(artist.discography); // [cd]</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4><aside class="tsd-sources">
 <p>Inherited from BaseArtist.discography</p>
 <ul>
-<li>Defined in <a href="https://github.com/ULL-ESIT-INF-DSI-2223/ull-esit-inf-dsi-22-23-prct05-objects-classes-interfaces-iluzioDev/blob/14197f7/src/ejercicio-01/base-artist.ts#L90">ejercicio-01/base-artist.ts:90</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/ULL-ESIT-INF-DSI-2223/ull-esit-inf-dsi-22-23-prct05-objects-classes-interfaces-iluzioDev/blob/4ff14f3/src/ejercicio-01/base-artist.ts#L90">ejercicio-01/base-artist.ts:90</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><a id="monthlyListeners" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>monthly<wbr/>Listeners</span><a href="#monthlyListeners" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited">
@@ -155,7 +146,7 @@ console.log(artist.discography); // [cd]</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4><aside class="tsd-sources">
 <p>Inherited from BaseArtist.monthlyListeners</p>
 <ul>
-<li>Defined in <a href="https://github.com/ULL-ESIT-INF-DSI-2223/ull-esit-inf-dsi-22-23-prct05-objects-classes-interfaces-iluzioDev/blob/14197f7/src/ejercicio-01/base-artist.ts#L45">ejercicio-01/base-artist.ts:45</a></li></ul></aside></li>
+<li>Defined in <a href="https://github.com/ULL-ESIT-INF-DSI-2223/ull-esit-inf-dsi-22-23-prct05-objects-classes-interfaces-iluzioDev/blob/4ff14f3/src/ejercicio-01/base-artist.ts#L44">ejercicio-01/base-artist.ts:44</a></li></ul></aside></li>
 <li class="tsd-signature" id="monthlyListeners.monthlyListeners-2"><span class="tsd-signature-symbol">set</span> monthlyListeners<span class="tsd-signature-symbol">(</span>monthlyListeners<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 <li class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>Setter for the monthly listeners of the artist/band.</p>
@@ -174,7 +165,7 @@ console.log(artist.discography); // [cd]</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4><aside class="tsd-sources">
 <p>Inherited from BaseArtist.monthlyListeners</p>
 <ul>
-<li>Defined in <a href="https://github.com/ULL-ESIT-INF-DSI-2223/ull-esit-inf-dsi-22-23-prct05-objects-classes-interfaces-iluzioDev/blob/14197f7/src/ejercicio-01/base-artist.ts#L61">ejercicio-01/base-artist.ts:61</a></li></ul></aside></li></ul></section></section>
+<li>Defined in <a href="https://github.com/ULL-ESIT-INF-DSI-2223/ull-esit-inf-dsi-22-23-prct05-objects-classes-interfaces-iluzioDev/blob/4ff14f3/src/ejercicio-01/base-artist.ts#L60">ejercicio-01/base-artist.ts:60</a></li></ul></aside></li></ul></section></section>
 <section class="tsd-panel-group tsd-member-group">
 <h2>Methods</h2>
 <section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a id="addCD" class="tsd-anchor"></a>
@@ -197,7 +188,7 @@ console.log(artist.discography); // [cd]</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4><aside class="tsd-sources">
 <p>Inherited from <a href="ejercicio_01_base_artist.BaseArtist.html">BaseArtist</a>.<a href="ejercicio_01_base_artist.BaseArtist.html#addCD">addCD</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/ULL-ESIT-INF-DSI-2223/ull-esit-inf-dsi-22-23-prct05-objects-classes-interfaces-iluzioDev/blob/14197f7/src/ejercicio-01/base-artist.ts#L108">ejercicio-01/base-artist.ts:108</a></li></ul></aside></li></ul></section></section></div>
+<li>Defined in <a href="https://github.com/ULL-ESIT-INF-DSI-2223/ull-esit-inf-dsi-22-23-prct05-objects-classes-interfaces-iluzioDev/blob/4ff14f3/src/ejercicio-01/base-artist.ts#L108">ejercicio-01/base-artist.ts:108</a></li></ul></aside></li></ul></section></section></div>
 <div class="col-4 col-menu menu-sticky-wrap menu-highlight">
 <div class="tsd-navigation settings">
 <details class="tsd-index-accordion"><summary class="tsd-accordion-summary">

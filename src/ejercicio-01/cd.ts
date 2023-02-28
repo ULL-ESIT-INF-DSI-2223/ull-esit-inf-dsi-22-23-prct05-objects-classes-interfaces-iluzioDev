@@ -17,9 +17,6 @@ export interface CDInfo {
  * Class representing a CD, its composed of a title, a year and a list of songs.
  * @class CD
  * @implements CDInfo
- * @param title Title of the CD.
- * @param year Year of the CD.
- * @param _songs List of songs of the CD.
  * @returns CD object.
  * ```typescript
  * let song = new Song("The Scientist", 2.34, true, 10000, "Pop", "Rock");
