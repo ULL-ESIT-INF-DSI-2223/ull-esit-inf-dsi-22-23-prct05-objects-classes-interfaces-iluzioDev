@@ -829,6 +829,34 @@ Los objetos, clases e interfaces son esenciales ya que permiten definir objetos 
 
 Otro factor muy importante es la flexibilidad y comodidad que nos prestan: en vez de tener que escribir una cantidad grande de líneas de código para tareas similares, podemos hacer uso de la herencia de clases o interfaces para cumplir el mismo objetivo de manera más rápida.
 
+Además, con el uso de la herramienta Coveralls, podemos asegurarnos de cumplir todas las ramas de nuestro código, como es en el caso de este proyecto. Desarrollando el código en función de las pruebas realizadas hemos obtenido un 100% de cubrimiento:
+
+```console
+----------------------------|---------|----------|---------|---------|-------------------
+File                        | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+----------------------------|---------|----------|---------|---------|-------------------
+All files                   |     100 |      100 |     100 |     100 |                   
+ PE102-ejercicio-01         |     100 |      100 |     100 |     100 |                   
+  mediaFilter.ts            |     100 |      100 |     100 |     100 |                   
+ PE102-ejercicio-02         |     100 |      100 |     100 |     100 |                   
+  hexadecimal.ts            |     100 |      100 |     100 |     100 |                   
+ ejercicio-01               |     100 |      100 |     100 |     100 |                   
+  artist.ts                 |     100 |      100 |     100 |     100 |                   
+  band.ts                   |     100 |      100 |     100 |     100 |                   
+  base-artist.ts            |     100 |      100 |     100 |     100 |                   
+  cd.ts                     |     100 |      100 |     100 |     100 |                   
+  music-library.ts          |     100 |      100 |     100 |     100 |                   
+  song.ts                   |     100 |      100 |     100 |     100 |                   
+ ejercicio-02               |     100 |      100 |     100 |     100 |                   
+  board.ts                  |     100 |      100 |     100 |     100 |                   
+  four-connect.ts           |     100 |      100 |     100 |     100 |                   
+  printable-four-connect.ts |     100 |      100 |     100 |     100 |                   
+  red-token.ts              |     100 |      100 |     100 |     100 |                   
+  token.ts                  |     100 |      100 |     100 |     100 |                   
+  yellow-token.ts           |     100 |      100 |     100 |     100 |                   
+----------------------------|---------|----------|---------|---------|-------------------
+```
+
 ## Bibliografía
 
 1. [Principios SOLID - https://samueleresca.net/solid-principles-using-typescript/](https://samueleresca.net/solid-principles-using-typescript/)
