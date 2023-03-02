@@ -109,13 +109,11 @@ export class MusicLibrary implements MusicLibraryInfo {
    * ```
    */
   showInfo(): string {
-    const name = `Nombre de la biblioteca: ${this.name}`;
-    const artists = `Artistas: ${this.artists
-      .map((artist) => artist.name)
-      .join(", ")}`;
-    console.log(name);
-    console.log(artists);
-    return name + "\n" + artists;
+    console.log(this.name);
+    console.table(this.artists);
+    return (
+      this.name + "\n" + this.artists.map((artist) => artist.name).join("\n")
+    );
   }
 
   /**

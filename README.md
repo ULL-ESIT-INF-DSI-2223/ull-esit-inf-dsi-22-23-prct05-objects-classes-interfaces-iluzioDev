@@ -366,6 +366,373 @@ En el caso de que no conozcan el juego y deseen probarlo, pueden jugar contra un
 
 En este ejercicio debemos realizar la jerarquía de clases e interfaces necesarias para implementar el juego, teniendo en cuenta la descripción anterior.
 
+### Desarrollo del Ejercicio
+
+Para este ejercicio se desarrollaron varias clases en total, siendo:
+
+- `Token`, `RedToken` y `YellowToken` para las fichas del Conecta 4. Tanto `RedToken` como `YellowToken` son clases hijas de `Token`, la única diferencia, obviamente, es el color que representan:
+
+```typescript
+export type Color = "red" | "yellow";
+
+export interface TokenInfo {
+  readonly color: Color;
+}
+
+export abstract class Token implements TokenInfo {
+  constructor(public readonly color: Color) {}
+
+  print(): string {
+    return this.color;
+  }
+}
+
+export class RedToken extends Token {
+  constructor() {
+    super("red");
+  }
+}
+
+export class YellowToken extends Token {
+  constructor() {
+    super("yellow");
+  }
+}
+```
+
+Además, se definió el tipo `Color`, que representa los posibles colores del juego, aunque si se trabajase con una versión modificada del mismo se podrían añadir más colores.
+
+#### <ins>**Tablero**</ins>
+
+- `Board`. Esta clase implementa la interfaz `BoardInfo`, consiste en una matriz de 6 filas y 7 columnas, cuyas casillas pueden tener los siguientes valores: `Token | null`. Esto implica que podemos utilizar tanto tokens rojos como amarillos para rellenar el tablero, ya que ambos heredan de `Token`, el caso por defecto es que las casillas estén vacías, es decir, a `null`.
+
+```typescript
+interface BoardInfo {
+  readonly rows: number;
+  readonly columns: number;
+  matrix: (Token | null)[][];
+}
+
+export class Board implements BoardInfo {
+  public readonly rows: number = 6;
+  public readonly columns: number = 7;
+  private _matrix: (Token | null)[][] = [];
+  constructor() {
+    for (let i = 0; i < this.rows; i++) {
+      this._matrix[i] = [];
+      for (let j = 0; j < this.columns; j++) {
+        this._matrix[i][j] = null;
+      }
+    }
+  }
+
+  get matrix(): (Token | null)[][] {
+    return this._matrix;
+  }
+
+  isEmpty(): boolean {
+    for (let i = 0; i < this.rows; i++)
+      for (let j = 0; j < this.columns; j++)
+        if (this._matrix[i][j] !== null) return false;
+    return true;
+  }
+
+  drop(column: number, token: Token): number | false {
+    if (column < 0 || column >= this.columns) return false;
+    for (let i = 0; i < this.rows; i++) {
+      if (this._matrix[i][column] === null) {
+        this._matrix[i][column] = token;
+        return i;
+      }
+    }
+    return false;
+  }
+
+  removeToken(column: number): boolean {
+    if (column < 0 || column >= this.columns) return false;
+    for (let i = this.rows - 1; i >= 0; i--) {
+      if (this._matrix[i][column] !== null) {
+        this._matrix[i][column] = null;
+        return true;
+      }
+    }
+    return false;
+  }
+
+  isFull(): boolean {
+    for (let i = 0; i < this.columns; i++)
+      if (!this.columnIsFull(i)) return false;
+    return true;
+  }
+
+  columnIsFull(column: number): boolean {
+    if (column < 0 || column >= this.columns) return false;
+    for (let i = 0; i < this.rows; i++)
+      if (this._matrix[i][column] === null) return false;
+    return true;
+  }
+}
+```
+
+Aparte, se han definido varios métodos básicos para gestionar el tablero:
+
+- `isEmpty()`. Verifica si el tablero está vacío o no.
+- `drop(column: number)`. Inserta un token en el tablero en referencia a la columna deseada. En el caso de que la columna sea inválida o esté llena, se devolverá `false`. La fila de inserción se trata de la primera que se encuentre vacía.
+- `removeToken(column: number)`. Elimina un token de una columna, se escogerá el último token insertado en dicha columna.
+- `isFull()`. Chequea si el tablero está completamente lleno.
+- `columnIsFull(column: number)`. Revisa si una columna está llena.
+
+#### <ins>**FourConnect**</ins>
+
+- `FourConnect`. Se encarga de gestionar el tablero a nivel de jugabilidad:
+
+```typescript
+interface FourConnectInfo {
+  currentPlayer: Token;
+  board: Board;
+}
+
+export class FourConnect implements FourConnectInfo {
+  protected _currentPlayer: Token = new RedToken();
+  protected _board: Board = new Board();
+  constructor() {}
+
+  get currentPlayer(): Token {
+    return this._currentPlayer;
+  }
+
+  set currentPlayer(token: Token) {
+    this._currentPlayer = token;
+  }
+
+  get board(): Board {
+    return this._board;
+  }
+
+  set board(board: Board) {
+    this._board = board;
+  }
+
+  drop(column: number): number | false {
+    return this._board.drop(column, this._currentPlayer);
+  }
+
+  checkWin(i: number, j: number): boolean {
+    return (
+      this.checkHorizontal(i, j) ||
+      this.checkVertical(i, j) ||
+      this.checkDiagonal(i, j)
+    );
+  }
+
+  checkHorizontal(i: number, j: number): boolean {
+    let left = j,
+      right = j;
+    while (
+      left >= 0 &&
+      this._board.matrix[i][left]?.color === this._board.matrix[i][j]?.color
+    )
+      left--;
+    while (
+      right < this._board.columns &&
+      this._board.matrix[i][right]?.color === this._board.matrix[i][j]?.color
+    )
+      right++;
+    return right - left - 1 >= 4;
+  }
+
+  checkVertical(i: number, j: number): boolean {
+    let down = i,
+      up = i;
+    while (
+      down >= 0 &&
+      this._board.matrix[down][j]?.color === this._board.matrix[i][j]?.color
+    )
+      down--;
+    while (
+      up < this._board.rows &&
+      this._board.matrix[up][j]?.color === this._board.matrix[i][j]?.color
+    )
+      up++;
+    return up - down - 1 >= 4;
+  }
+
+  checkDiagonal(i: number, j: number): boolean {
+    let left = j,
+      right = j,
+      down = i,
+      up = i;
+    while (
+      left >= 0 &&
+      down >= 0 &&
+      this._board.matrix[down][left]?.color === this._board.matrix[i][j]?.color
+    ) {
+      left--;
+      down--;
+    }
+    while (
+      right < this._board.columns &&
+      up < this._board.rows &&
+      this._board.matrix[up][right]?.color === this._board.matrix[i][j]?.color
+    ) {
+      right++;
+      up++;
+    }
+    if (right - left - 1 >= 4) return true;
+    (left = j), (right = j), (down = i), (up = i);
+    while (
+      left >= 0 &&
+      up < this._board.rows &&
+      this._board.matrix[up][left]?.color === this._board.matrix[i][j]?.color
+    ) {
+      left--;
+      up++;
+    }
+    while (
+      right < this._board.columns &&
+      down >= 0 &&
+      this._board.matrix[down][right]?.color === this._board.matrix[i][j]?.color
+    ) {
+      right++;
+      down--;
+    }
+    return right - left - 1 >= 4;
+  }
+}
+```
+
+Aparte de sus respectivos getters y setters, `FourConnect` se encarga de insertar los tokens con el método `drop`, de controlar quién es el jugador actual con el atributo `_currentPlayer`, y comprobar si alguien ha ganado, ya sea de manera horizontal, vertical o diagonal mediante el uso de los métodos `checkHorizontal()`, `checkVertical()` y `checkDiagonal()`.
+
+#### <ins>**PrintableFourConnect**</ins>
+
+Esta clase extiende a `FourConnect` para implementar un método `print()`, que imprime por consola el tablero de juego con los respectivos tokens insertados y diferenciados por colores. Se tomó este diseño para separar la parte visual del juego de las reglas y la jugabilidad en sí.
+
+```typescript
+export class PrintableFourConnect extends FourConnect {
+  constructor() {
+    super();
+  }
+
+  print(): string {
+    let row,
+      result = "";
+    for (let i = this.board.rows - 1; i >= 0; i--) {
+      row = "\x1b[34m|";
+      for (let j = 0; j < this.board.columns; j++) {
+        if (this.board.matrix[i][j] === null) {
+          row += " ";
+        } else {
+          if (this.board.matrix[i][j] instanceof RedToken)
+            row += "\x1b[31mR\x1b[34m";
+          else row += "\x1b[33mY\x1b[34m";
+        }
+        row += "|";
+      }
+      result += row + "\n";
+      console.log(row);
+    }
+    row = " ^ ^ ^ ^ ^ ^ ^ \n";
+    console.log(row);
+    result += row;
+    return result;
+  }
+}
+```
+
+Por último, aparte de todos los test realizados para este ejercicio, se desarrolló un pequeño fichero `main.ts` con una función `play()` para jugar contra otra persona un juego de Conecta4. En el siguiente snippet se puede visualizar un ejemplo de partida:
+
+```console
+---------------
+4-CONNECT GAME
+---------------
+
+| | | | | | | |
+| | | | | | | |
+| | | | | | | |
+| | | | | | | |
+| | | | | | | |
+| | | | | | | |
+ ^ ^ ^ ^ ^ ^ ^
+
+----------------------------
+JUGADOR 1
+----------------------------
+Columna: 1
+----------------------------
+
+| | | | | | | |
+| | | | | | | |
+| | | | | | | |
+| | | | | | | |
+| | | | | | | |
+|R| | | | | | |
+ ^ ^ ^ ^ ^ ^ ^
+
+----------------------------
+JUGADOR 2
+----------------------------
+Columna: 2
+----------------------------
+
+| | | | | | | |
+| | | | | | | |
+| | | | | | | |
+| | | | | | | |
+| | | | | | | |
+|R|Y| | | | | |
+ ^ ^ ^ ^ ^ ^ ^
+
+...
+
+----------------------------
+JUGADOR 1
+----------------------------
+Columna: 3
+----------------------------
+
+| | | | | | | |
+| | | | | | | |
+| | | | | | | |
+|Y| | | | | | |
+|R|R|R| | |Y|R|
+|R|Y|R|R|Y|Y|Y|
+ ^ ^ ^ ^ ^ ^ ^
+
+----------------------------
+JUGADOR 2
+----------------------------
+Columna: 6
+----------------------------
+
+| | | | | | | |
+| | | | | | | |
+| | | | | | | |
+|Y| | | | |Y| |
+|R|R|R| | |Y|R|
+|R|Y|R|R|Y|Y|Y|
+ ^ ^ ^ ^ ^ ^ ^
+
+----------------------------
+JUGADOR 1
+----------------------------
+Columna: 4
+----------------------------
+
+| | | | | | | |
+| | | | | | | |
+| | | | | | | |
+|Y| | | | |Y| |
+|R|R|R|R| |Y|R|
+|R|Y|R|R|Y|Y|Y|
+ ^ ^ ^ ^ ^ ^ ^
+
+----------------------------
+GANA EL JUGADOR 1!
+----------------------------
+```
+
+Cabe destacar que aunque no se pueda apreciar en este informe, como habíamos comentado el método `print()` diferencia los colores de cada token para que sea más amigable el juego.
+
 ## PE102
 
 ### <ins>**Ejercicio 1. Función mediaFilter**</ins>
@@ -455,3 +822,14 @@ export function sub(a: Hexadecimal, b: Hexadecimal): Hexadecimal {
 ```
 
 Notese como el método `parse()` se ha definido como un método estático de la clase `Hexadecimal`, esto logra que no haya que crear un objeto `Hexadecimal` si sólo queremos saber el valor en decimal de un número hexadecimal.
+
+## Conclusiones
+
+Los objetos, clases e interfaces son esenciales ya que permiten definir objetos no estándares de `TypeScript` con reglas específicas para cada problema. Además, el propio `Typescript` ofrece herramientas para diseñar nuevos objetos de manera segura mediante etiquetas de acceso inexistentes en `Javascript` con el objetivo de hacer nuestro código más sólido.
+
+Otro factor muy importante es la flexibilidad y comodidad que nos prestan: en vez de tener que escribir una cantidad grande de líneas de código para tareas similares, podemos hacer uso de la herencia de clases o interfaces para cumplir el mismo objetivo de manera más rápida.
+
+## Bibliografía
+
+1. [Principios SOLID - https://samueleresca.net/solid-principles-using-typescript/](https://samueleresca.net/solid-principles-using-typescript/)
+2. [Conecta 4 - Wikipedia](https://es.wikipedia.org/wiki/Conecta_4)

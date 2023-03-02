@@ -271,11 +271,9 @@ describe("MusicLibrary class tests", () => {
   });
   it("music_library1.showInfo() returns the name of the library and its artists", () => {
     expect(music_library1.showInfo()).to.be.equal(
-      `Nombre de la biblioteca: ${music_library1.name}` +
+      music_library1.name +
         "\n" +
-        `Artistas: ${music_library1.artists
-          .map((artist) => artist.name)
-          .join(", ")}`
+        music_library1.artists.map((artist) => artist.name).join("\n")
     );
   });
   it("music_library1.countSongsInDisc('Blessed and Possessed') returns 1", () => {
