@@ -233,7 +233,7 @@ describe("FourConnect class tests", () => {
 describe("PrintableFourConnect class tests", () => {
   it("PrintableFourConnect should be able to print the board", () => {
     expect(printableFourConnect.print()).to.be.equal(
-      "\x1b[34m| | | | | | | |\n| | | | | | | |\n| | | | | | | |\n| | | | | | | |\n| | | | | | | |\n| | | | | | | |\n ^ ^ ^ ^ ^ ^ ^ \n"
+      "\x1b[34m| | | | | | | |\n\x1b[34m| | | | | | | |\n\x1b[34m| | | | | | | |\n\x1b[34m| | | | | | | |\n\x1b[34m| | | | | | | |\n\x1b[34m| | | | | | | |\n ^ ^ ^ ^ ^ ^ ^ \n"
     );
   });
   it("PrintableFourConnect should be able to print the board with a token", () => {
@@ -241,7 +241,7 @@ describe("PrintableFourConnect class tests", () => {
     printableFourConnect.currentPlayer = yellow_token;
     printableFourConnect.drop(0);
     expect(printableFourConnect.print()).to.be.equal(
-      "\x1b[34m| | | | | | | |\n| | | | | | | |\n| | | | | | | |\n| | | | | | | |\n|\x1b[33mY\x1b[34m| | | | | | |\n|\x1b[31mR\x1b[34m| | | | | | |\n ^ ^ ^ ^ ^ ^ ^ \n"
+      "\x1b[34m| | | | | | | |\n\x1b[34m| | | | | | | |\n\x1b[34m| | | | | | | |\n\x1b[34m| | | | | | | |\n\x1b[34m|\x1b[33mY\x1b[34m| | | | | | |\n\x1b[34m|\x1b[31mR\x1b[34m| | | | | | |\n ^ ^ ^ ^ ^ ^ ^ \n"
     );
   });
 });
